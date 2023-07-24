@@ -1,6 +1,6 @@
 ---
-import portrait from "/main-portrait.jpg"
-import paint from "/paint.png"
+import portrait from "/main-portrait.jpg";
+import paint from "/paint.png";
 ---
 
 <div
@@ -84,8 +84,8 @@ import paint from "/paint.png"
 
 <script>
   function updatePath() {
-    const textMain = document.querySelector("#anim-p") as HTMLElement
-    const path = document.querySelector("#border-path") as SVGPathElement
+    const textMain: HTMLElement | null = document.querySelector("#anim-p");
+    const path: SVGPathElement | null = document.querySelector("#border-path");
 
     if (textMain && path) {
       path.setAttribute(
@@ -93,11 +93,11 @@ import paint from "/paint.png"
         `M0,0 V${textMain.offsetHeight} H${textMain.offsetWidth} v${
           textMain.offsetHeight / 2
         }`
-      )
-      const pathLength = path.getTotalLength()
+      );
+      const pathLength = path.getTotalLength();
 
-      path.style.strokeDasharray = pathLength.toString()
-      path.style.strokeDashoffset = pathLength.toString()
+      path.style.strokeDasharray = pathLength.toString();
+      path.style.strokeDashoffset = pathLength.toString();
     }
   }
 
@@ -109,23 +109,24 @@ import paint from "/paint.png"
     duration: number,
     letter: string = ""
   ) {
-    let counter = document.getElementById(selector)
-    let stepTime = Math.abs(Math.floor(duration / target))
+    let counter = document.getElementById(selector);
+    let stepTime = Math.abs(Math.floor(duration / target));
     if (current < target && counter) {
-      current++
-      counter.innerText = current.toString() + letter
+      current++;
+      counter.innerText = current.toString() + letter;
       setTimeout(
         () => incrementCounter(selector, current, target, duration, letter),
         stepTime
-      )
+      );
     }
   }
-  incrementCounter("art-counter", 0, 85, 1000)
-  incrementCounter("youtube-counter", 0, 328, 1000, "k")
-  incrementCounter("reviews-counter", 0, 250, 1000)
+  incrementCounter("art-counter", 0, 85, 1000);
+  incrementCounter("youtube-counter", 0, 328, 1000, "k");
+  incrementCounter("reviews-counter", 0, 250, 1000);
 
   // Update the path when the page loads
-  window.addEventListener("DOMContentLoaded", updatePath)
+  window.addEventListener("DOMContentLoaded", updatePath);
+
   // Update the path when the window is resized
-  window.addEventListener("resize", updatePath)
+  window.addEventListener("resize", updatePath);
 </script>
